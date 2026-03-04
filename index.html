@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PATHFIT Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="screen">
+            <div class="welcome-content">
+                <h1 class="welcome-title">PATHFIT Quiz</h1>
+                <p class="welcome-subtitle">Test your knowledge on Movement, Dance Fundamentals, and Philippine Folk
+                    Dance!</p>
+            </div>
+            <div class="welcome-actions">
+                <button id="start-btn" class="primary-btn">START QUIZ</button>
+            </div>
+        </div>
+
+        <!-- Header: Progress Bar -->
+        <header id="header" class="hidden">
+            <button id="close-btn" class="icon-btn">✖</button>
+            <div class="progress-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <div class="health">
+                <span id="health-icon">❤️</span>
+                <span id="health-count">5</span>
+            </div>
+        </header>
+
+        <!-- Main Question Area -->
+        <main id="main" class="hidden">
+            <h2 id="question-text">Loading...</h2>
+            <!-- Dynamic Options Container -->
+            <div id="options-container"></div>
+            <!-- Input Container for Identification -->
+            <div id="input-container" class="hidden">
+                <input type="text" id="identification-input" placeholder="Type your answer here..." autocomplete="off">
+            </div>
+        </main>
+
+        <!-- Bottom Action Bar -->
+        <footer id="footer" class="hidden">
+            <button id="check-btn" class="primary-btn" disabled>CHECK</button>
+        </footer>
+
+        <!-- Feedback Bottom Sheet -->
+        <div id="feedback-sheet" class="hidden">
+            <div class="feedback-content">
+                <h3 id="feedback-title">Correct!</h3>
+                <p id="feedback-message" class="hidden">Answer: ...</p>
+                <button id="next-btn" class="primary-btn feedback-action" disabled>CONTINUE</button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="screen hidden">
+            <h1>Lesson Complete!</h1>
+            <div class="stats">
+                <div class="stat-box">
+                    <span class="stat-label">TOTAL XP</span>
+                    <span class="stat-value" id="final-score">0</span>
+                </div>
+            </div>
+            <div class="detailed-stats">
+                <div class="stat-row">
+                    <span>Correct Answers:</span>
+                    <span id="correct-count">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Incorrect Answers:</span>
+                    <span id="incorrect-count">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Accuracy:</span>
+                    <span id="accuracy-percent">0%</span>
+                </div>
+            </div>
+            <div class="result-actions">
+                <button id="restart-btn" class="primary-btn">PLAY AGAIN</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
