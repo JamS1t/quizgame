@@ -80,19 +80,6 @@ body {
     transition: width 0.3s ease;
 }
 
-.health {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    color: var(--danger-color);
-    font-weight: 800;
-    font-size: 18px;
-}
-
-#health-icon {
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
 /* Main */
 #main {
     flex-grow: 1;

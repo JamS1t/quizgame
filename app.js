@@ -3,7 +3,6 @@
 // State
 let currentQuestionIndex = 0;
 let score = 0;
-let health = 5;
 let answered = false;
 let correctCount = 0;
 let incorrectCount = 0;
@@ -15,7 +14,6 @@ const header = document.getElementById('header');
 const main = document.getElementById('main');
 const footer = document.getElementById('footer');
 const progressBar = document.getElementById('progress-bar');
-const healthCount = document.getElementById('health-count');
 const questionText = document.getElementById('question-text');
 const optionsContainer = document.getElementById('options-container');
 const inputContainer = document.getElementById('input-container');
@@ -37,7 +35,6 @@ function init() {
     shuffleArray(questions);
     renderQuestion();
     updateProgress();
-    updateHealth();
 }
 
 // Render current question
@@ -133,9 +130,7 @@ checkBtn.onclick = () => {
         correctCount++;
         playSound('correct');
     } else {
-        health--;
         incorrectCount++;
-        updateHealth();
         playSound('incorrect');
     }
 
@@ -178,11 +173,6 @@ function hideFeedback() {
 nextBtn.onclick = () => {
     hideFeedback();
 
-    if (health <= 0) {
-        showResult();
-        return;
-    }
-
     currentQuestionIndex++;
 
     if (currentQuestionIndex >= questions.length) {
@@ -200,7 +190,7 @@ function showResult() {
     footer.classList.add('hidden');
 
     // Calculate final score
-    let finalXP = score + (health * 5); // Bonus for remaining health
+    let finalXP = score;
 
     // Animate score counter
     animateValue(finalScore, 0, finalXP, 1500);
@@ -218,7 +208,6 @@ function showResult() {
 restartBtn.onclick = () => {
     currentQuestionIndex = 0;
     score = 0;
-    health = 5;
     correctCount = 0;
     incorrectCount = 0;
     resultScreen.classList.add('hidden');
@@ -231,16 +220,6 @@ restartBtn.onclick = () => {
 function updateProgress() {
     const progress = (currentQuestionIndex / questions.length) * 100;
     progressBar.style.width = `${progress}%`;
-}
-
-// Utility: Update Health
-function updateHealth() {
-    healthCount.innerText = health;
-    const icon = document.getElementById('health-icon');
-    icon.style.transform = 'scale(1.5)';
-    setTimeout(() => {
-        icon.style.transform = 'scale(1)';
-    }, 200);
 }
 
 // Utility: Shuffle Array (Fisher-Yates)
